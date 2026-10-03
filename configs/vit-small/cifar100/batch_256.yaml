@@ -1,0 +1,27 @@
+dataset:
+  name: cifar100
+  root: ./data
+model:
+  family: vit
+  image_size: 32
+  patch_size: 4
+  dim: 512
+  depth: 8
+  heads: 8
+  mlp_dim: 1024
+  dropout: 0.1
+  emb_dropout: 0.0
+training:
+  epochs: 300
+  batch_size: 256
+  learning_rate: 0.0003
+  weight_decay: 0.05
+  betas: [0.9, 0.999]
+  warmup_epochs: 10
+  min_lr: 1.0e-06
+  ema_decay: null
+  randaugment: true
+  mixup_cutmix: true
+  mixup_alpha: 0.2
+  cutmix_alpha: 1.0
+  seed: 42

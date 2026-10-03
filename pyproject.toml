@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vitrm"
+version = "0.1.0"
+description = "ViTRM: Vision Transformer with Recursive Memory"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Anonymous Authors" }]
+dependencies = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "vit-pytorch>=1.0",
+    "mlflow>=2.0",
+    "scikit-learn>=1.0",
+    "numpy",
+    "pyyaml>=6.0",
+    "click>=8.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.scripts]
+vitrm = "vitrm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]  # long lines are left to the formatter
+
+[tool.ruff.lint.isort]
+known-first-party = ["vitrm", "conftest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
